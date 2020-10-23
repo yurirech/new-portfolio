@@ -18,7 +18,7 @@
 }
 
 .footerContainer {
-  padding: 2vh 0 3.5vh;
+  padding: 2vh 0 3.5vh !important;
 
     > span {
       color: rgba(0, 0, 0, 0.5);
@@ -61,7 +61,7 @@
   }
 
   .footerContainer {
-    padding: 2vh 3.75rem;
+    padding: 2vh 3.75rem !important;
     margin-top: 3rem;
   }
 
@@ -86,7 +86,7 @@
   }
 
   .footerContainer {
-    padding: 2vh 1rem;
+    padding: 2vh 1rem !important;
     margin-top: 5rem;
   }
 }
