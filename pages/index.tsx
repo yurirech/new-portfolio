@@ -1,10 +1,12 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.scss'
+
+import styles from '../styles/home.module.scss'
 import utilStyles from '../styles/utils.module.scss'
-import Navbar from "../components/navbar/navbar";
+
 import ProjectDisplay from "../components/project-display/project-display";
 import Chip from "../components/chip/chip";
 
+import { projects } from "../models/projects";
 
 export default function Home() {
   return (
@@ -13,12 +15,6 @@ export default function Home() {
         <title>YR - Web Design and Development</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <header style={{position: 'absolute', width: '100%'}}>
-        <Navbar />
-      </header>
-
-
 
       <main>
         <div className={utilStyles.background}>
@@ -38,7 +34,7 @@ export default function Home() {
               </h1>
 
               <p className={utilStyles.homeParagraph}>
-                I design and build amazing websites for businesses around the world. If you need a sleek and powerful website,
+                I design and build amazing websites for businesses and people around the world. If you need a sleek and powerful website,
                 send me an email. If we are a good fit, I will give you a time and cost estimate.</p>
               <div className={utilStyles.buttonBox}>
                 <a href="#Portfolio" className={utilStyles.button}>check out my work</a>
@@ -48,64 +44,54 @@ export default function Home() {
           </section>
         </div>
 
-        <section id='Portfolio' className={`${utilStyles.container} ${utilStyles.fullHeightContainer}`}>
-          <ProjectDisplay title='Latest Work' description='This is a homepage design and build for a concept project – a chat application. I designed the page
-            first then built a responsive web page using Webflow.' >
-            <div className={utilStyles.flexContainer}>
-              <Chip title='Website Design'/>
-              <Chip title='Concept'/>
-              <Chip title='React Development'/>
-            </div>
-          </ProjectDisplay>
-        </section>
+        {
+          projects.map((project, i) => {
+            return (
+              <section id='Portfolio' key={i} className={`${utilStyles.container} ${utilStyles.fullHeightContainer}`}>
+                <ProjectDisplay id={project.id}
+                                title={project.title}
+                                description={project.description}
+                                image={project.image}
+                                >
+                  <div className={utilStyles.flexContainer}>
+                    {
+                      project.chips.map(chip => {
+                        return <Chip title={chip}/>
+                      })
+                    }
+                  </div>
+                </ProjectDisplay>
+              </section>
+            )}
+        )}
 
-        <section className={`${utilStyles.container} ${utilStyles.fullHeightContainer}`}>
-          <ProjectDisplay title='Latest Work' description='This is a homepage design and build for a concept project – a chat application. I designed the page
-            first then built a responsive web page using Webflow.' >
-            <div className={utilStyles.flexContainer}>
-              <Chip title='Website Design'/>
-              <Chip title='Concept'/>
-              <Chip title='React Development'/>
+        <section  className={`${utilStyles.container} ${styles.whatIDoContainer}`}>
+          <div className={utilStyles.flexContainer}>
+            <div className={`${styles.leftBlock} ${utilStyles.leftBlock}`}>
+              <h1>What&nbsp;
+                <div className={utilStyles.highlightBox}>
+                  <div className={utilStyles.highlight}> </div>
+                  <span> I do</span>
+                </div>
+              </h1>
             </div>
-          </ProjectDisplay>
-        </section>
 
-        <section>
-          <div className="left-block">
-            <h1>What <span>I do</span></h1>
-          </div>
-          <div className="right-block">
-            <div className="right-block-item">
-              <h3>Design</h3>
-              <p>I design beautiful and powerful websites for modern businesses. Any business today needs a website that
-                wins customers’ trust and helps you do your business well. I make sure your website is up to that standard.</p>
-            </div>
-            <div className="right-block-item">
-              <h3>Development</h3>
-              <p>I build websites with React or Webflow where I can create responsive, powerful and fully custom websites.
-                Plus, Webflow has an incredibly simple Content Editor for you and your team to edit website content quickly and easily.</p>
-            </div>
-          </div>
-        </section>
-
-        <div className={utilStyles.background}>
-          <section className={utilStyles.container}>
-            <div className={utilStyles.flexContainer}>
-              <div className="left-block">
-                <h1>Want to Work?</h1>
+            <div className={`${styles.rightBlock} ${utilStyles.rightBlock}`}>
+              <div className={styles.rightBlockItem}>
+                <h2>Design</h2>
+                <p className={utilStyles.homeParagraph}>I design beautiful and powerful websites for modern businesses. Any business today needs a website that
+                  wins customers’ trust and helps you do your business well. I make sure your website is up to that standard.</p>
               </div>
-              <div className="right-block">
-                <p>If you need a modern and powerful website for your business, startup or yourself, I am available for
-                  work. You can email me directly at <span>yurirechr@gmail.com</span>.</p>
+              <div className={styles.rightBlockItem}>
+                <h2>Development</h2>
+                <p className={utilStyles.homeParagraph}>I build websites with React (like this one!) or Webflow where I can create responsive,
+                  powerful and fully custom websites.
+                  Plus, Webflow has an incredibly simple Content Editor for you and your team to edit website content quickly and easily.</p>
               </div>
             </div>
-          </section>
-        </div>
+          </div>
+        </section>
       </main>
-
-      <footer style={{position: 'absolute'}}>
-        © All rights reserved – Yuri Ramalho Rech
-      </footer>
     </div>
   )
 }

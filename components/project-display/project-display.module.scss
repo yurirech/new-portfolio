@@ -1,22 +1,6 @@
 @import "styles/animations";
 
-  .leftBlock, .rightBlock {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: baseline;
-  }
-
   .leftBlock {
-    small {
-      text-transform: uppercase;
-      color: var(--color-fade-gray);
-      font-weight: 700;
-      font-size: 1rem;
-      letter-spacing: 0.13rem;
-    }
-
     h1 {
       margin-top: 0.25rem;
     }
@@ -62,7 +46,7 @@
         display: none;
         position: absolute;
         bottom: -1.25rem;
-        right: 2.25rem;
+        right: 3.5rem;
         transition: fade-in .1s;
 
       }
@@ -80,4 +64,20 @@
       }
 
     }
+  }
+
+  @media (max-width: 1024px) {
+    .rightBlock {
+      display: none;
+    }
+  }
+
+@media (max-width: 576px) {
+    .rightBlock {
+      display: none;
+    }
+
+  .leftBlock {
+    margin: 4rem 0 1rem;
+  }
   }

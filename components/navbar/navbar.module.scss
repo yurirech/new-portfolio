@@ -1,17 +1,7 @@
-
 .container {
   display: flex;
   align-items: center;
-  padding: 0;
-  animation-name: slideInFromLeft;
-  animation-timing-function: ease-in;
-  animation-duration: 3s;
-  animation-delay: 2s;
-
-
-
-
-
+  //padding: 0;
 
   h2 {
     font-weight: 900;
@@ -28,8 +18,18 @@
     }
 
   }
+}
 
+@media (max-width: 576px) {
+  .container {
 
+    div {
+      a:first-of-type {
+        margin-right: 1rem;
+      }
+
+    }
+  }
 }
 
 

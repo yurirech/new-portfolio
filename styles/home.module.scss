@@ -1,0 +1,94 @@
+.homeContainer {
+  > div {
+    padding: 16vh 0;
+    width: 70%;
+
+    p {
+      width: 50%;
+    }
+
+    h1 {
+      margin-bottom: 1.75rem;
+    }
+  }
+}
+
+.whatIDoContainer {
+  padding: 11vh 0 7vh;
+}
+
+.footerContainer {
+  padding: 2vh 0 3.5vh;
+
+    > span {
+      color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+.flexContainer {
+  margin: 6vh 0 27vh;
+}
+
+.leftBlock {
+  justify-content: unset!important;
+
+  h1 {
+    margin-top: 0;
+  }
+}
+
+.rightBlock {
+  .rightBlockItem {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .homeContainer {
+    > div {
+      padding: 10vh 0;
+      width: 90%;
+
+      p {
+        width: 100%;
+      }
+    }
+  }
+
+  .whatIDoContainer {
+    padding: 0 3.75rem;
+    margin-top: 3rem;
+  }
+
+  .footerContainer {
+    padding: 2vh 3.75rem;
+    margin-top: 3rem;
+  }
+
+  .flexContainer {
+    margin: 2vh 0 7vh;
+  }
+
+
+}
+
+@media (max-width: 576px) {
+  .homeContainer {
+    > div {
+      padding: 13vh 0;
+
+    }
+  }
+
+  .whatIDoContainer {
+    padding: 0 1rem;
+    margin-top: 5rem;
+  }
+
+  .footerContainer {
+    padding: 2vh 1rem;
+    margin-top: 5rem;
+  }
+}
+
+
