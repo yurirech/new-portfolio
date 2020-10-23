@@ -68,16 +68,13 @@
 
   @media (max-width: 1024px) {
     .rightBlock {
-      display: none;
+      display: none !important;
     }
   }
 
 @media (max-width: 576px) {
-    .rightBlock {
-      display: none;
-    }
 
-  .leftBlock {
-    margin: 4rem 0 1rem;
-  }
+    .leftBlock {
+      margin: 4rem 0 1rem;
+    }
   }
