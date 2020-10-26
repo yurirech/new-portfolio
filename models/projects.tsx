@@ -1,5 +1,5 @@
 export interface ProjectDisplay {
-  id: String
+  id?: String
   title: String,
   description: String,
   image: string,
