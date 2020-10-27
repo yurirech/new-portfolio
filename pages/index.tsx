@@ -7,8 +7,11 @@ import ProjectDisplay from "../components/project-display/project-display";
 import Chip from "../components/chip/chip";
 
 import { projects } from "../models/projects";
+import {useEffect} from "react";
+import {db} from "../firebase/firebase.utils";
 
 export default function Home() {
+
   return (
     <div>
       <Head>
