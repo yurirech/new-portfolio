@@ -5,7 +5,7 @@ import { getAllItemsIds, getProjectData } from "../../lib/items";
 import {useEffect} from "react";
 
 export async function getStaticPaths() {
-  const paths = getAllItemsIds()
+  const paths = await getAllItemsIds()
   return {
     paths,
     fallback: false
@@ -13,14 +13,13 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params, title, description, isSiteOn, link, image }) {
-  const projectData = getProjectData(params.id, title, description, isSiteOn, link, image)
+  const projectData = await getProjectData(params.id, title, description, isSiteOn, link, image)
   return {
     props: {
       projectData
     }
   }
 }
-
 
 
 const Project = ({ projectData }) => {
@@ -46,11 +45,11 @@ const Project = ({ projectData }) => {
           </div>
         </header>
       </div>
-        
+
         <main>
          <section className={styles.imageWrapper}>
            <img src={projectData.image} alt="Project Screen"/>
-         </section> 
+         </section>
         </main>
       </>
   )

@@ -18,14 +18,14 @@ export default function Footer() {
             <div className={`${styles.rightBlock} ${utilStyles.rightBlock}`}>
               <p className={utilStyles.homeParagraph}>I can build the perfect website for you so hit me up!
                 You can email me directly at &nbsp;
-                <div className={utilStyles.highlightBox}>
-                  <div className={utilStyles.highlight}> </div>
+                <span className={utilStyles.highlightBox}>
+                  <span className={utilStyles.highlight}> </span>
                   <span>
                       <strong>
                         <a href="mailto: yurirechr@gmail.com">yurirechr@gmail.com</a>
                       </strong>.
                     </span>
-                </div>
+                </span>
               </p>
             </div>
           </div>

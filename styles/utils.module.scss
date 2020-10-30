@@ -117,6 +117,34 @@
   }
 }
 
+.inputContainer {
+  input, textarea {
+    color: var(--color-fade-gray);
+    font-size: 1.05rem;
+    padding: .75rem .25rem;
+    border: 0;
+    transition: box-shadow 400ms;
+    margin-bottom: 1rem;
+    width: 100%;
+    -webkit-box-shadow: 0px 1px 0px 0px var(--color-fade-gray);
+    box-shadow: 0px 1px 0px 0px var(--color-fade-gray);
+
+    &:focus, &:hover {
+      outline: unset;
+      -webkit-box-shadow: 0px 3px 0px 0px var(--color-highlight);
+      box-shadow: 0px 3px 0px 0px var(--color-highlight);
+    }
+  }
+
+  textarea {
+    font-family: 'Mulish', sans-serif;
+  }
+}
+
+.checkbox {
+  padding: .75rem .25rem;
+}
+
 @media (max-width: 1024px) {
 
   .fullHeightContainer {
