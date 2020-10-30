@@ -145,14 +145,17 @@ export default function ProjectForm() {
 
           :
 
-          <div>
-            <h1>Your project has been added successfully</h1>
-            <Link href='/'>
-              Back to home
-            </Link>
-            <Link href='/project-form'>
-              <a onClick={() => setSuccess(false)}>Add another </a>
-            </Link>
+          <div className={`${utilStyles.container} ${styles.container}`}>
+             <div className={styles.content}>
+               <h2>Your project has been added successfully</h2>
+               <Link href='/'>
+                 <a className={utilStyles.linkAnimation}>Back to home</a>
+               </Link>
+               <Link href='/project-form'>
+                 <a className={utilStyles.linkAnimation}
+                    onClick={() => setSuccess(false)}>Add another </a>
+               </Link>
+             </div>
           </div>
       }
     </div>

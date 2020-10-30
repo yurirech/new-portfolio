@@ -6,11 +6,18 @@ import utilStyles from '../styles/utils.module.scss'
 import ProjectDisplay from "../components/project-display/project-display";
 import Chip from "../components/chip/chip";
 
-import { projects } from "../models/projects";
-import {useEffect} from "react";
-import {db} from "../firebase/firebase.utils";
+import {useEffect, useState} from "react";
+import {getProjectsData} from "../lib/items";
 
 export default function Home() {
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    getProjectsData()
+      .then(projects => setProjects(projects));
+  }, [])
+
+
 
   return (
     <div>
@@ -46,20 +53,19 @@ export default function Home() {
             </div>
           </section>
         </div>
-
         {
-          projects.map((project, i) => {
+          projects.map((project) => {
             return (
-              <section id='Portfolio' key={i} className={`${utilStyles.container} ${utilStyles.fullHeightContainer}`}>
+              <section id='Portfolio' key={project.id} className={`${utilStyles.container} ${utilStyles.fullHeightContainer}`}>
                 <ProjectDisplay id={project.id}
                                 title={project.title}
                                 description={project.description}
-                                image={project.image}
+                                image={project.thumbnail}
                                 >
                   <div className={utilStyles.flexContainer}>
                     {
-                      project.chips.map(chip => {
-                        return <Chip title={chip}/>
+                      project.tags.map(chip => {
+                        return <Chip key={chip} title={chip}/>
                       })
                     }
                   </div>

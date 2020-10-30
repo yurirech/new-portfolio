@@ -1,6 +1,17 @@
-import { projects } from "../models/projects";
+import {db} from "../firebase/firebase.utils";
 
-export function getAllItemsIds() {
+export async function getProjectsData() {
+  const projectsCollection = await db.collection('projects').get()
+   return projectsCollection.docs.map((doc) => {
+    return {
+      id: doc.id,
+      ...doc.data()
+    }
+  });
+}
+
+export async function getAllItemsIds() {
+  const projects = await getProjectsData();
   return projects.map(project => {
     return {
       params: {
@@ -10,14 +21,15 @@ export function getAllItemsIds() {
   })
 }
 
-export function getProjectData(id, title, description, isSiteOn, link, image ) {
-  projects.map(data => {
+export async function getProjectData(id, title, description, isSiteOn, link, image ) {
+  const projects = await getProjectsData();
+  projects.map((data: any) => {
     if (data.id === id) {
       title = data.title;
       description = data.description;
       isSiteOn = data.isSiteOn;
       link = data.link || null;
-      image = data.imageFull;
+      image = data.image;
     }
   });
   return {
