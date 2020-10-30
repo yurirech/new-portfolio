@@ -1,10 +1,12 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Link from 'next/link';
 
-import {db, storageRef} from '../../firebase/firebase.utils';
+import {db, storageRef, auth} from '../../firebase/firebase.utils';
+import { signIn } from "../../lib/auth";
 
 import Input from "../../components/input/input";
 import Textarea from "../../components/textarea/textarea";
+
 import styles from './index.module.scss'
 import utilStyles from '../../styles/utils.module.scss'
 
@@ -19,7 +21,18 @@ export default function ProjectForm() {
   const [tags, setTags] = useState([]);
   const [success, setSuccess] = useState(false);
   const [siteUrl, setSiteUrl] = useState(null);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(null);
 
+  useEffect(() => {
+    auth.onAuthStateChanged(function (user) {
+      if (user) {
+        // User is signed in.
+        setIsUserLoggedIn(true);
+      } else {
+        setIsUserLoggedIn(false);
+      }
+    });
+  }, [isUserLoggedIn]);
 
   const fileUpload = async (file) => {
     //target the input file
@@ -61,6 +74,11 @@ export default function ProjectForm() {
     setTags(e.target.value.split(',').map(item => item.trim()));
   }
 
+  const handleSignIn = e => {
+    e.preventDefault();
+    signIn(e.target.email.value, e.target.password.value);
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
     db.collection('projects').add({
@@ -76,13 +94,28 @@ export default function ProjectForm() {
     }).catch((err) => {
       console.log(err);
     })
-
   }
 
   return (
     <div className={`${utilStyles.container} ${styles.container}`}>
       {
-        !success ?
+        !isUserLoggedIn ?
+        <form onSubmit={handleSignIn}>
+          <h2>Sign In</h2>
+          <Input name='email'
+                 type='text'
+                 placeholder='Your Email'
+                 label={null}
+          />
+          <Input name='password'
+                 type='password'
+                 placeholder='Your Email'
+                 label={null}
+          />
+          <button type='submit'>submit</button>
+        </form>
+        :
+        (!success ?
           <form onSubmit={handleSubmit}>
               <h2>Project Upload</h2>
               <Input name='title'
@@ -156,7 +189,7 @@ export default function ProjectForm() {
                     onClick={() => setSuccess(false)}>Add another </a>
                </Link>
              </div>
-          </div>
+          </div>)
       }
     </div>
   );
