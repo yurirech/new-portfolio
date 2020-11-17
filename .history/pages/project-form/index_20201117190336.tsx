@@ -75,8 +75,6 @@ export default function ProjectForm() {
       return;
     }
     setThumbnailUrl(await url.getDownloadURL());
-   } catch (err) {
-     console.log(err);
    }
   };
 

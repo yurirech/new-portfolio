@@ -25,13 +25,12 @@ export async function getAllItemsIds() {
     }
   })
   } catch (err) {
-    console.log(err);
+    console.log
   }
 }
 
 export async function getProjectData(id, title, description, isSiteOn, link, image ) {
-  try {
-    const projects = await getProjectsData();
+  const projects = await getProjectsData();
   projects.map((data: any) => {
     if (data.id === id) {
       title = data.title;
@@ -48,8 +47,5 @@ export async function getProjectData(id, title, description, isSiteOn, link, ima
     isSiteOn,
     link,
     image
-  }
-  } catch (err) {
-    console.log(err);
   }
 }

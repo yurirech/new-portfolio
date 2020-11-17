@@ -50,6 +50,6 @@ export async function getProjectData(id, title, description, isSiteOn, link, ima
     image
   }
   } catch (err) {
-    console.log(err);
+    console.log
   }
 }

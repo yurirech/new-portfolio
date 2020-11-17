@@ -49,7 +49,5 @@ export async function getProjectData(id, title, description, isSiteOn, link, ima
     link,
     image
   }
-  } catch (err) {
-    console.log(err);
   }
 }

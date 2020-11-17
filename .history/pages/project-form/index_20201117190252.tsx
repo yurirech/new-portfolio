@@ -55,29 +55,22 @@ export default function ProjectForm() {
   }
 
   const handleFileUpload = async (e) => {
-    try {
-      const url = await fileUpload(e);
+    const url = await fileUpload(e);
     if (!url) {
       alert('choose a file to upload');
       return;
     }
     setFileUrl(await url.getDownloadURL());
-    } catch (err) {
-      console.log(err);
-    }
+
   };
 
   const handleThumbnailUpload = async (e) => {
-   try {
     const url = await fileUpload(e);
     if (!url) {
       alert('choose a file to upload');
       return;
     }
     setThumbnailUrl(await url.getDownloadURL());
-   } catch (err) {
-     console.log(err);
-   }
   };
 
   const handleTags = e => {
