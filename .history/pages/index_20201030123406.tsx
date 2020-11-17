@@ -23,7 +23,7 @@ export default function Home() {
     <div>
       <Head>
         <title>YR - Web Design and Development</title>
-        <link rel="icon" href="/favicon.png" crossOrigin="anonymous" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
       <main>

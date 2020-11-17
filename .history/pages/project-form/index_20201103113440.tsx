@@ -35,8 +35,7 @@ export default function ProjectForm() {
   }, [isUserLoggedIn]);
 
   const fileUpload = async (file) => {
-    try {
-      //target the input file
+    //target the input file
     const newFile = file.target.files[0];
 
     //Create file ref to the storage
@@ -49,35 +48,26 @@ export default function ProjectForm() {
     // store file in the cloud and get the file url and return the url reference
     await fileRef.put(newFile);
     return fileRef;
-    } catch (err) {
-      console.log(err);
-    }
+
   }
 
   const handleFileUpload = async (e) => {
-    try {
-      const url = await fileUpload(e);
+    const url = await fileUpload(e);
     if (!url) {
       alert('choose a file to upload');
       return;
     }
     setFileUrl(await url.getDownloadURL());
-    } catch (err) {
-      console.log(err);
-    }
+
   };
 
   const handleThumbnailUpload = async (e) => {
-   try {
     const url = await fileUpload(e);
     if (!url) {
       alert('choose a file to upload');
       return;
     }
     setThumbnailUrl(await url.getDownloadURL());
-   } catch (err) {
-     console.log(err);
-   }
   };
 
   const handleTags = e => {

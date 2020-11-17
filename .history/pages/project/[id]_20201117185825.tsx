@@ -7,26 +7,19 @@ import {useEffect} from "react";
 export async function getStaticPaths() {
   try {
     const paths = await getAllItemsIds()
-    return {
-      paths,
-      fallback: false
-    }
-  } catch (err) {
-      console.log(err)
+  } catch
+  return {
+    paths,
+    fallback: false
   }
-  
 }
 
 export async function getStaticProps({ params, title, description, isSiteOn, link, image }) {
-  try {
-    const projectData = await getProjectData(params.id, title, description, isSiteOn, link, image)
-    return {
-      props: {
-        projectData
-      }
-  }
-  } catch (err) {
-    console.log(err)
+  const projectData = await getProjectData(params.id, title, description, isSiteOn, link, image)
+  return {
+    props: {
+      projectData
+    }
   }
 }
 

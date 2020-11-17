@@ -30,26 +30,5 @@ export async function getAllItemsIds() {
 }
 
 export async function getProjectData(id, title, description, isSiteOn, link, image ) {
-  try {
-    const projects = await getProjectsData();
-  projects.map((data: any) => {
-    if (data.id === id) {
-      title = data.title;
-      description = data.description;
-      isSiteOn = data.isSiteOn;
-      link = data.link || null;
-      image = data.image;
-    }
-  });
-  return {
-    id,
-    title,
-    description,
-    isSiteOn,
-    link,
-    image
-  }
-  } catch (err) {
-    console.log(err);
-  }
+  try ()
 }

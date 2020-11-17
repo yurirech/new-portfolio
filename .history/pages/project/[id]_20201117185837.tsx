@@ -11,22 +11,18 @@ export async function getStaticPaths() {
       paths,
       fallback: false
     }
-  } catch (err) {
-      console.log(err)
+  } catch {
+
   }
   
 }
 
 export async function getStaticProps({ params, title, description, isSiteOn, link, image }) {
-  try {
-    const projectData = await getProjectData(params.id, title, description, isSiteOn, link, image)
-    return {
-      props: {
-        projectData
-      }
-  }
-  } catch (err) {
-    console.log(err)
+  const projectData = await getProjectData(params.id, title, description, isSiteOn, link, image)
+  return {
+    props: {
+      projectData
+    }
   }
 }
 

@@ -20,10 +20,10 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params, title, description, isSiteOn, link, image }) {
   try {
     const projectData = await getProjectData(params.id, title, description, isSiteOn, link, image)
-    return {
-      props: {
-        projectData
-      }
+  return {
+    props: {
+      projectData
+    }
   }
   } catch (err) {
     console.log(err)
