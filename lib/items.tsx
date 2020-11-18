@@ -20,7 +20,7 @@ export async function getAllItemsIds() {
   return projects.map(project => {
     return {
       params: {
-        id: project.id.toLowerCase(),
+        id: project.id,
       }
     }
   })

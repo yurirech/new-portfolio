@@ -3,13 +3,14 @@ import styles from './[id].module.scss';
 
 import { getAllItemsIds, getProjectData } from "../../lib/items";
 import {useEffect} from "react";
+import { useRouter } from 'next/router';
 
 export async function getStaticPaths() {
   try {
     const paths = await getAllItemsIds()
     return {
       paths,
-      fallback: false
+      fallback: true
     }
   } catch (err) {
       console.log(err)
@@ -32,6 +33,12 @@ export async function getStaticProps({ params, title, description, isSiteOn, lin
 
 
 const Project = ({ projectData }) => {
+
+  const router = useRouter();
+
+  if(router.isFallback) {
+    return <div>Loading</div>
+  }
 
   useEffect(() => {
     window.scrollTo(0, 0);
