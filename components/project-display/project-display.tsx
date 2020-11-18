@@ -18,7 +18,7 @@ const ProjectItem: React.FC<ProjectDisplay> = ({title, children, description, im
             {children}
             <p className={utilStyles.homeParagraph}>{description}</p>
 
-            <Link href='/project/[id]' as={`/project/${id}`} prefetch>
+            <Link href={'/project/[id]'} as={`/project/${id}`} prefetch>
               <div className={utilStyles.buttonBox}>
                 <div className={utilStyles.buttonBorder}> </div>
                 <a className={utilStyles.button}>see this project</a>
@@ -27,7 +27,7 @@ const ProjectItem: React.FC<ProjectDisplay> = ({title, children, description, im
           </div>
 
           <div className={`${styles.rightBlock} ${utilStyles.rightBlock}`}>
-            <Link href='/project/[id]' as={`/project/${id}`} prefetch>
+            <Link href={'/project/[id]' }as={`/project/${id}`} prefetch>
               <section className={styles.images}>
                 <div className={styles.imgWrapper}>
                   <img src={image} alt="Project Image"/>
