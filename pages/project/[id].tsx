@@ -9,7 +9,7 @@ export async function getStaticPaths() {
     const paths = await getAllItemsIds()
     return {
       paths,
-      fallback: true
+      fallback: false
     }
   } catch (err) {
       console.log(err)
