@@ -2,7 +2,7 @@ import {db} from "../firebase/firebase.utils";
 
 export async function getProjectsData() {
   try {
-    const projectsCollection = await db.collection('projects').get()
+    const projectsCollection = await db.collection('projects').orderBy('date', 'desc').get()
    return projectsCollection.docs.map((doc) => {
     return {
       id: doc.id,

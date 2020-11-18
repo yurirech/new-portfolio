@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import Link from 'next/link';
 
-import {db, storageRef, auth} from '../../firebase/firebase.utils';
+import {db, storageRef, auth, timestamp} from '../../firebase/firebase.utils';
 import { signIn } from "../../lib/auth";
 
 import Input from "../../components/input/input";
@@ -9,10 +9,6 @@ import Textarea from "../../components/textarea/textarea";
 
 import styles from './index.module.scss'
 import utilStyles from '../../styles/utils.module.scss'
-
-
-
-//TODO: Implement field validation
 
 export default function ProjectForm() {
   const [fileUrl, setFileUrl] = useState(null);
@@ -98,7 +94,8 @@ export default function ProjectForm() {
       isSiteOn: isSiteOn,
       siteUrl: siteUrl,
       image: fileUrl,
-      thumbnail: thumbnailUrl
+      thumbnail: thumbnailUrl,
+      date: timestamp
     }).then(() => {
       setSuccess(true);
     }).catch((err) => {
