@@ -33,11 +33,12 @@ export async function getProjectData(id, title, description, isSiteOn, link, ima
   try {
     const projects = await getProjectsData();
   projects.map((data: any) => {
+    console.log(data);
     if (data.id === id) {
       title = data.title;
       description = data.description;
       isSiteOn = data.isSiteOn;
-      link = data.link || null;
+      link = data.siteUrl || null;
       image = data.image;
     }
   });
